@@ -28,7 +28,7 @@ Programs:
 
 ----------------------------------
 
-### Features
+## Features
 - **All of the project requirements**
 - Choosing color of the pen
 
