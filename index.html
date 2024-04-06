@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Odin - etch a sketch</title>
 
-    <link rel="stylesheet" href="./style.css">
-</head>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-<body>
+  <body>
     <div class="options">
+      <div>
         <div>
-            <div>
-                <input type="checkbox" id="random">
-                <label for="random">Random color</label>
-            </div>
-
-            <div>
-                <input type="checkbox" id="darkening">
-                <label for="darkening">Darkening effect</label>
-            </div>
+          <input type="checkbox" id="random" />
+          <label for="random">Random color</label>
         </div>
 
-        <button class="change-size">Change grid size</button>
-
         <div>
-            <label for="color">Color</label>
-            <input type="color" id="color">
+          <input type="checkbox" id="darkening" />
+          <label for="darkening">Darkening effect</label>
         </div>
+      </div>
+
+      <button class="change-size">Change grid size</button>
+
+      <div>
+        <label for="color">Color</label>
+        <input type="color" id="color" />
+      </div>
     </div>
 
     <div class="grid"></div>
 
     <script src="./script.js"></script>
-</body>
-
+  </body>
 </html>

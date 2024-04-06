@@ -24,78 +24,77 @@ document.addEventListener("mouseup", stopDrawing)
 
 generateGrid(gridSize)
 
-/* -------------- functions -------------- */
-
+/* ------------------- functions ------------------- */
 function changeColor(evt) {
-    color = colorPicker.value
+  color = colorPicker.value
 }
 
 function switchRandomColor(evt) {
-    randomColor = randomColorCheckbox.checked
+  randomColor = randomColorCheckbox.checked
 }
 
 function switchDarkening(evt) {
-    darkening = darkeningCheckbox.checked
+  darkening = darkeningCheckbox.checked
 }
 
 function generateGrid(size) {
-    const gridFragment = document.createDocumentFragment()
+  const gridFragment = document.createDocumentFragment()
 
-    for (let i = 0; i < size; i++) {
-        const row = document.createElement("div")
-        row.className = "row"
+  for (let i = 0; i < size; i++) {
+    const row = document.createElement("div")
+    row.className = "row"
 
-        for (let j = 0; j < size; j++) {
-            const cell = document.createElement("div")
-            cell.className = "cell"
-            cell.addEventListener("mousedown", startDrawing)
-            cell.addEventListener("mouseover", draw)
-            row.appendChild(cell)
-        }
-
-        gridFragment.appendChild(row)
+    for (let j = 0; j < size; j++) {
+      const cell = document.createElement("div")
+      cell.className = "cell"
+      cell.addEventListener("mousedown", startDrawing)
+      cell.addEventListener("mouseover", draw)
+      row.appendChild(cell)
     }
 
-    gridContainer.innerHTML = ""
-    gridContainer.appendChild(gridFragment)
+    gridFragment.appendChild(row)
+  }
+
+  gridContainer.innerHTML = ""
+  gridContainer.appendChild(gridFragment)
 }
 
 function startDrawing(evt) {
-    drawingStarted = true
-    draw(evt)
+  drawingStarted = true
+  draw(evt)
 }
 
 function stopDrawing(evt) {
-    drawingStarted = false
+  drawingStarted = false
 }
 
 function draw(evt) {
-    if (!drawingStarted) return
+  if (!drawingStarted) return
 
-    if (randomColor) evt.target.style.backgroundColor = randomizeColor()
-    else evt.target.style.backgroundColor = color
+  if (randomColor) evt.target.style.backgroundColor = randomizeColor()
+  else evt.target.style.backgroundColor = color
 
-    if (darkening) {
-        const opacity = evt.target.style.opacity
-        if (opacity == null) evt.target.style.opacity = "0.1"
-        else evt.target.style.opacity = `${Math.min(+opacity + 0.1, 1)}`
-    } else evt.target.style.opacity = null
+  if (darkening) {
+    const opacity = evt.target.style.opacity
+    if (opacity == null) evt.target.style.opacity = "0.1"
+    else evt.target.style.opacity = `${Math.min(+opacity + 0.1, 1)}`
+  } else evt.target.style.opacity = null
 }
 
 function askForSize() {
-    const newSize = +prompt("Input the grid size (1 - 100)")
+  const newSize = +prompt("Input the grid size (1 - 100)")
 
-    if (Number.isNaN(newSize) || newSize < 1 || newSize > 100) {
-        alert("Wrong grid size value")
-        return
-    }
+  if (Number.isNaN(newSize) || newSize < 1 || newSize > 100) {
+    alert("Wrong grid size value")
+    return
+  }
 
-    gridSize = newSize
-    generateGrid(gridSize)
+  gridSize = newSize
+  generateGrid(gridSize)
 }
 
 function randomizeColor() {
-    const MAX_VALUE = 16 ** 6 - 1
-    const newColor = Math.floor(Math.random() * MAX_VALUE).toString(16)
-    return `#${newColor}`
+  const MAX_VALUE = 16 ** 6 - 1
+  const newColor = Math.floor(Math.random() * MAX_VALUE).toString(16)
+  return `#${newColor}`
 }
